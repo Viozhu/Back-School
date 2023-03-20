@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ROL {
+  STUDENT
+  TEACHER
+  ADMIN
+}
+
+enum GENDER {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum DAY {
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+  SATURDAY
+  SUNDAY
+}
+
+enum FAMILYRELATION {
+  FATHER
+  MOTHER
+  BROTHER
+  SISTER
+  GRANDFATHER
+  GRANDMOTHER
+  GRANDSON
+  GRANDDAUGHTER
+  AUNT
+  UNCLE
+  COUSIN
+  NEPHEW
+  NIECE
+  FRIEND
+  OTHER
+}
+
+model User {
+  id           Int            @id @default(autoincrement())
+  email        String         @unique
+  name         String?
+  age          Int?
+  rol          ROL
+  gender       GENDER?
+  rooms        Room[]
+  familyMember FamilyMember[] @relation("FamilyMember")
+  userMember   FamilyMember?  @relation("UserMember")
+}
+
+model Room {
+  id        Int     @id @default(autoincrement())
+  name      String
+  content   String?
+  day       DAY
+  time      String
+  capacity  Int
+  student   User    @relation(fields: [studentId], references: [id])
+  studentId Int
+}
+
+model FamilyMember {
+  id             Int            @id @default(autoincrement())
+  type           FAMILYRELATION
+  memberId       Int?           @unique
+  familyMemberId Int?           @unique
+  userMember     User?          @relation("UserMember", fields: [memberId], references: [id])
+  familyMember   User?          @relation("FamilyMember", fields: [familyMemberId], references: [id])
+}
