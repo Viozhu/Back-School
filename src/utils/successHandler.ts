@@ -3,6 +3,6 @@ export const successHandler = (res: any, data: any, message: string) => {
     success: true,
     status: 200,
     message,
-    data
-  })
-}
+    data,
+  });
+};

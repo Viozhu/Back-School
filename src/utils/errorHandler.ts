@@ -5,18 +5,18 @@ export const errorHandlerValidator = (res: any, errors: any) => {
     error: errors.map((error: any) => {
       return {
         property: error.property,
-        constraints: error.constraints,
-      };
-    }),
-  });
-};
+        constraints: error.constraints
+      }
+    })
+  })
+}
 
 export const errorHandlerRequest = (res: any, err: any) => {
   res.status(500).send({
     success: false,
     status: 500,
     error: JSON.parse(
-      JSON.stringify(err.message.replaceAll('\n', "'").replaceAll("'", '')),
-    ),
-  });
-};
+      JSON.stringify(err.message.replaceAll('\n', "'").replaceAll("'", ''))
+    )
+  })
+}
