@@ -9,7 +9,8 @@
     "start": "ts-node --files src/index.ts ./src/index.ts",
     "dev": "nodemon --exec ts-node --files src/index.ts",
     "p:s": "npx prisma studio",
-    "p:m": "npx prisma migrate dev --name init"
+    "p:m": "npx prisma migrate dev --name init",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +20,8 @@
     "prisma": "^4.11.0",
     "ts-node": "^10.9.1",
     "ts-standard": "^12.0.2",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.2",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "@prisma/client": "^4.11.0",
@@ -27,5 +29,10 @@
     "cors": "^2.8.5",
     "express": "^4.18.2",
     "nodemon": "^2.0.21"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write"
+    ]
   }
 }
