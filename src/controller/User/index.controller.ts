@@ -37,7 +37,7 @@ export const getUsers = async (req, res): RequestHandler => {
         throw new Error(err.message)
       })
 
-    return successHandler(res, Users, 'Successful')
+    return successHandler<GET_USERS>(res, Users, 'Successful')
   } catch (err) {
     errorHandlerRequest(res, err)
   }
@@ -49,15 +49,15 @@ export const getUser = async (req, res): RequestHandler => {
   const validateParams = new GET_USER_VALIDATOR()
   validateParams.id = id
 
-  validate(validateParams).then((errors) => {
+  void validate(validateParams).then((errors) => {
     if (errors.length > 0) {
       errorHandlerValidator(res, errors)
     } else {
-      sendResponse()
+      void sendResponse()
     }
   })
 
-  const sendResponse = async () => {
+  const sendResponse = async (): Promise<void> => {
     try {
       const User: GET_USER = await prisma.user
         .findUnique({
@@ -81,7 +81,7 @@ export const getUser = async (req, res): RequestHandler => {
         .catch((err: PrismaClientValidationError) => {
           throw new Error(err.message)
         })
-      return successHandler(res, User, 'Successful')
+      return successHandler<GET_USER>(res, User, 'Successful')
     } catch (err) {
       errorHandlerRequest(res, err)
     }
@@ -99,15 +99,15 @@ export const createUser = async (req, res): RequestHandler => {
   validateParams.gender = gender
   validateParams.roomId = roomId
 
-  validate(validateParams).then((errors) => {
+  void validate(validateParams).then((errors) => {
     if (errors.length > 0) {
       errorHandlerValidator(res, errors)
     } else {
-      sendResponse()
+      void sendResponse()
     }
   })
 
-  const sendResponse = async () => {
+  const sendResponse = async (): Promise<void> => {
     try {
       const User: USER = await prisma.user
         .create({
@@ -117,7 +117,7 @@ export const createUser = async (req, res): RequestHandler => {
             rol,
             age,
             gender,
-            ...(roomId && {
+            ...(roomId !== null && {
               rooms: {
                 connect: {
                   id: roomId
@@ -130,7 +130,7 @@ export const createUser = async (req, res): RequestHandler => {
           throw new Error(err.message)
         })
 
-      return successHandler(res, User, 'Successful created')
+      return successHandler<USER>(res, User, 'Successful created')
     } catch (err) {
       errorHandlerRequest(res, err)
     }
@@ -149,15 +149,15 @@ export const updateUser = async (req, res): RequestHandler => {
   validateParams.gender = gender
   validateParams.roomId = roomId
 
-  validate(validateParams).then((errors) => {
+  void validate(validateParams).then((errors) => {
     if (errors.length > 0) {
       errorHandlerValidator(res, errors)
     } else {
-      sendResponse()
+      void sendResponse()
     }
   })
 
-  const sendResponse = async () => {
+  const sendResponse = async (): Promise<void> => {
     try {
       const User: USER = await prisma.user
         .update({
@@ -170,7 +170,7 @@ export const updateUser = async (req, res): RequestHandler => {
             rol,
             age,
             gender,
-            ...(roomId && {
+            ...(roomId !== null && {
               rooms: {
                 connect: {
                   id: roomId
@@ -183,7 +183,7 @@ export const updateUser = async (req, res): RequestHandler => {
           throw new Error(err.message)
         })
 
-      return successHandler(res, User, 'Successful updated')
+      return successHandler<USER>(res, User, 'Successful updated')
     } catch (err) {
       errorHandlerRequest(res, err)
     }
@@ -196,15 +196,15 @@ export const deleteUser = async (req, res): RequestHandler => {
   const validateParams = new GET_USER_VALIDATOR()
   validateParams.id = id
 
-  validate(validateParams).then((errors) => {
+  void validate(validateParams).then((errors) => {
     if (errors.length > 0) {
       errorHandlerValidator(res, errors)
     } else {
-      sendResponse()
+      void sendResponse()
     }
   })
 
-  const sendResponse = async () => {
+  const sendResponse = async (): Promise<void> => {
     try {
       const User: USER = await prisma.user
         .delete({

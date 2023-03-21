@@ -6,11 +6,11 @@ interface USER_TYPE {
   familyMember: Array<{
     type: FAMILYRELATION
     userMember: {
-      name: string
-    }
+      name: string | null
+    } | null
   }>
 }
 
-export type GET_USERS = void | Array<User & USER_TYPE>
+export type GET_USERS = Array<(User & USER_TYPE) | null>
 
-export type GET_USER = void | (User & USER_TYPE)
+export type GET_USER = (User & USER_TYPE) | null

@@ -56,6 +56,7 @@ model User {
   name         String?
   age          Int?
   rol          ROL
+  image        String?        @default("https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp")
   gender       GENDER?
   rooms        Room[]
   familyMember FamilyMember[] @relation("FamilyMember")
