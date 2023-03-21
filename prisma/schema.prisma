@@ -64,14 +64,13 @@ model User {
 }
 
 model Room {
-  id        Int     @id @default(autoincrement())
-  name      String
-  content   String?
-  day       DAY
-  time      String
-  capacity  Int
-  student   User    @relation(fields: [studentId], references: [id])
-  studentId Int
+  id       Int     @id @default(autoincrement())
+  name     String
+  content  String?
+  day      DAY
+  time     String
+  capacity Int
+  students User[]
 }
 
 model FamilyMember {

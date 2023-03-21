@@ -1,4 +1,6 @@
 export * from './FamilyMember/index.controller'
 export * from './FamilyMember/validator'
+export * from './Room/index.controller'
+export * from './Room/validator'
 export * from './User/index.controller'
 export * from './User/validator'
