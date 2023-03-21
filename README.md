@@ -4,10 +4,10 @@
     <img src="https://cdn-icons-png.flaticon.com/512/55/55281.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">Calendar Back</h3>
+  <h3 align="center"> Back School</h3>
 
   <p align="center">
-   This is the calendar back repository from Numen
+   This is the calendar back repository from IT Academy
     <br/>
     <br/>
     <a href=""><strong>Explore the docs »</strong></a>
