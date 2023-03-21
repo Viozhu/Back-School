@@ -64,7 +64,7 @@ npm install npm@latest -g
 1. Clone the repo
 
 ```sh
-git clone [https://github.com/Viozhu/Back-School.git](https://github.com/Viozhu/Back-School.git)
+git clone https://github.com/Viozhu/Back-School.git
 ```
 
 3. Install NPM packages
