@@ -23,6 +23,7 @@ export const getUsers = async (req, res): Promise<void> => {
           rooms: true,
           familyMember: {
             select: {
+              id: true,
               type: true,
               userMember: {
                 select: {
@@ -68,6 +69,7 @@ export const getUser = async (req, res): Promise<void> => {
             rooms: true,
             familyMember: {
               select: {
+                id: true,
                 type: true,
                 userMember: {
                   select: {

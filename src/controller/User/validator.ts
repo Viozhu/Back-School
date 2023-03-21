@@ -14,7 +14,6 @@ export class GET_USER_VALIDATOR {
   })
     id: string
 }
-// name, email, rol, age, gender, roomId
 export class CREATE_USER_VALIDATOR {
   @IsString({
     message: 'El nombre debe ser una string'

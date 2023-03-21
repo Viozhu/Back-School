@@ -2,6 +2,7 @@ import express, { json, urlencoded } from 'express'
 import cors from 'cors' // express is a function
 
 import userRouter from './routes/User/index'
+import familyMemberRouter from './routes/FamilyMember/index'
 const app = express()
 
 // middleware
@@ -10,7 +11,7 @@ app.use(urlencoded({ extended: true }))
 app.use(cors())
 // rotes
 app.use('/user', userRouter)
-// app.use('/user', require('./routes/User/index.ts'));
+app.use('/familymember', familyMemberRouter)
 // app.use('/holiday', require('./routes/Holiday/index.ts'));
 // app.use('/career', require('./routes/Career/index.ts'));
 // app.use('/professor', require('./routes/Professor/index.ts'));
