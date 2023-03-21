@@ -32,15 +32,14 @@
 
 ## About The Project
 
-The project is focused on the control of the classes, teachers, tutors and tls of the numen academy.
+The project is focused on the control of the classes, teachers of the IT academy.
 In which you can create courses, assign classes, assign teachers to said classes, among other things.
 
 ## Built With
 
 <p align="center"> 
 <img src="https://img.shields.io/badge/Express%20js-000000?style=for-the-badge&logo=express&logoColor=white"/> 
-  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" /> 
-  <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" />  
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
 <img src="https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />  
   <img src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white"/> 
   </p>
