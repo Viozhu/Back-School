@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import { PrismaClientValidationError } from '@prisma/client/runtime'
 import { validate } from 'class-validator'
-import { RequestHandler } from 'express'
+
 import {
   errorHandlerRequest,
   errorHandlerValidator,
@@ -15,7 +15,7 @@ import {
 } from './validator'
 const prisma = new PrismaClient()
 
-export const getUsers = async (req, res): RequestHandler => {
+export const getUsers = async (req, res): Promise<void> => {
   try {
     const Users: GET_USERS = await prisma.user
       .findMany({
@@ -43,7 +43,7 @@ export const getUsers = async (req, res): RequestHandler => {
   }
 }
 
-export const getUser = async (req, res): RequestHandler => {
+export const getUser = async (req, res): Promise<void> => {
   const { id } = req.params
 
   const validateParams = new GET_USER_VALIDATOR()
@@ -88,7 +88,7 @@ export const getUser = async (req, res): RequestHandler => {
   }
 }
 
-export const createUser = async (req, res): RequestHandler => {
+export const createUser = async (req, res): Promise<void> => {
   const { name, email, rol, age, gender, roomId } = req.body
 
   const validateParams = new CREATE_USER_VALIDATOR()
@@ -137,7 +137,7 @@ export const createUser = async (req, res): RequestHandler => {
   }
 }
 
-export const updateUser = async (req, res): RequestHandler => {
+export const updateUser = async (req, res): Promise<void> => {
   const { id, name, email, rol, age, gender, roomId } = req.body
 
   const validateParams = new UPDATE_USER_VALIDATOR()
@@ -190,7 +190,7 @@ export const updateUser = async (req, res): RequestHandler => {
   }
 }
 
-export const deleteUser = async (req, res): RequestHandler => {
+export const deleteUser = async (req, res): Promise<void> => {
   const { id } = req.params
 
   const validateParams = new GET_USER_VALIDATOR()

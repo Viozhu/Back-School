@@ -3,14 +3,14 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-
   "parser": "@typescript-eslint/parser",
   "plugins": ["@typescript-eslint"],
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   "rules": {
+    "semi": ["always"],
+    "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-floating-promises": "off",
-    "@typescript-eslint/strict-boolean-expressions": "warn",
-    "@typescript-eslint/explicit-function-return-type": "off"
+    "@typescript-eslint/strict-boolean-expressions": "warn"
   },
   "env": {
     "es6": true
