@@ -119,7 +119,7 @@ export const createUser = async (req, res): Promise<void> => {
             rol,
             age,
             gender,
-            ...(roomId !== null && {
+            ...(roomId !== undefined && {
               rooms: {
                 connect: {
                   id: roomId
