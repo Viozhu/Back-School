@@ -49,6 +49,11 @@ export class CREATE_USER_VALIDATOR {
   })
     gender: string
 
+  @IsString({
+    message: 'La imagen debe ser una string'
+  })
+    image: string
+
   @IsOptional()
   @IsString({
     message: 'El id de la sala debe ser una string'

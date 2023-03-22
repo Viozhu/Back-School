@@ -91,7 +91,7 @@ export const getUser = async (req, res): Promise<void> => {
 }
 
 export const createUser = async (req, res): Promise<void> => {
-  const { name, email, rol, age, gender, roomId } = req.body
+  const { name, email, rol, age, gender, roomId, image } = req.body
 
   const validateParams = new CREATE_USER_VALIDATOR()
   validateParams.name = name
@@ -100,6 +100,7 @@ export const createUser = async (req, res): Promise<void> => {
   validateParams.age = age
   validateParams.gender = gender
   validateParams.roomId = roomId
+  validateParams.image = image
 
   void validate(validateParams).then((errors) => {
     if (errors.length > 0) {
@@ -119,6 +120,7 @@ export const createUser = async (req, res): Promise<void> => {
             rol,
             age,
             gender,
+            image,
             ...(roomId !== undefined && {
               rooms: {
                 connect: {
