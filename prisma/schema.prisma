@@ -59,7 +59,7 @@ model User {
   image        String?        @default("https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp")
   gender       GENDER?
   rooms        Room[]
-  familyMember FamilyMember[] @relation("FamilyMember")
+  familyMember FamilyMember[]
   userMember   FamilyMember?  @relation("UserMember")
 }
 
@@ -79,5 +79,5 @@ model FamilyMember {
   memberId       Int?           @unique
   familyMemberId Int?           @unique
   userMember     User?          @relation("UserMember", fields: [memberId], references: [id])
-  familyMember   User?          @relation("FamilyMember", fields: [familyMemberId], references: [id])
+  familyMember   User[]
 }
