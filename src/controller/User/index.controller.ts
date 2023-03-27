@@ -27,6 +27,7 @@ export const getUsers = async (req, res): Promise<void> => {
               type: true,
               userMember: {
                 select: {
+                  id: true,
                   name: true
                 }
               }
@@ -73,6 +74,7 @@ export const getUser = async (req, res): Promise<void> => {
                 type: true,
                 userMember: {
                   select: {
+                    id: true,
                     name: true
                   }
                 }

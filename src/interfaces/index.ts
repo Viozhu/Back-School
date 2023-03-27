@@ -2,12 +2,15 @@ import { User, Room, FAMILYRELATION, FamilyMember } from '@prisma/client'
 
 export type USER = User
 export type ROOM = Room
+
 export type FAMILY_MEMBER = FamilyMember
+
 interface USER_TYPE {
   rooms: Room[]
   familyMember: Array<{
     type: FAMILYRELATION
     userMember: {
+      id: number
       name: string | null
     } | null
   }>

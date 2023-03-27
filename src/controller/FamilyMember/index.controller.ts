@@ -100,17 +100,52 @@ export const deleteFamilyMember = async (req, res): Promise<void> => {
     throw new Error('Id is required')
   }
   try {
-    const userMember: FAMILY_MEMBER = await prisma.familyMember
-      .delete({
+    const getFamilyMember = await prisma.familyMember.findUnique({
+      where: {
+        id: Number(id)
+      },
+      include: {
+        familyMember: true
+      }
+    })
+
+    if (getFamilyMember === null) {
+      throw new Error('Family member not found')
+    }
+
+    if (
+      getFamilyMember.familyMember === null ||
+      getFamilyMember.familyMember.length === 0
+    ) {
+      throw new Error('Family member not found')
+    }
+
+    const getFamilyMember2 = await prisma.familyMember.findUnique({
+      where: {
+        memberId: Number(getFamilyMember.familyMember[0].id)
+      },
+      include: {
+        familyMember: true
+      }
+    })
+
+    if (getFamilyMember2 === null) {
+      throw new Error('Family member not found')
+    }
+
+    const userMember = await prisma.familyMember
+      .deleteMany({
         where: {
-          id: Number(id)
+          id: {
+            in: [Number(id), Number(getFamilyMember2.id)]
+          }
         }
       })
       .catch((err: PrismaClientValidationError) => {
         throw new Error(err.message)
       })
 
-    return successHandler<FAMILY_MEMBER>(res, userMember, 'Successful')
+    return successHandler(res, userMember, 'Successful')
   } catch (err) {
     errorHandlerRequest(res, err)
   }
