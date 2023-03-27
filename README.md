@@ -85,6 +85,11 @@ DATABASE_URL = 'ENTER YOUR DATABASE URL';
 npx prisma generate
 ```
 
+### Url Deploy
+```sh
+https://backendschool.onrender.com
+```
+
 ### New Migration
 
 1. Add the new feature in `./prisma/schema.prisma`
